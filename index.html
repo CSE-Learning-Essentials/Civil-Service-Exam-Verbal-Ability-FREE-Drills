@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Civil Service Exam Practice Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .choices li {
+      list-style: none;
+      margin: 5px 0;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .correct-answer {
+      color: green;
+      font-weight: bold;
+    }
+    .social-link {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    .social-link a {
+      color: #3b5998;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .advertisement {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Civil Service Exam Practice Test</h1>
+<p><strong>Created by:</strong> CSE Learning Essentials</p>
+<p><strong>Section 1:</strong> Verbal Ability - Part 1: Word Meaning</p>
+<p><strong>Passing Score:</strong> 8/10</p>
+<p><em>Direction:</em> Choose the meaning of the highlighted phrase based on the context.</p>
+
+<form id="quizForm">
+  <script>
+    const questions = [
+      {
+        text: "1. My cousins live abroad, so we only get to see each other <strong>ONCE IN A BLUE MOON</strong>.",
+        options: [
+          "A) Once a year",
+          "B) Frequently",
+          "C) Very rarely",
+          "D) Every other day"
+        ],
+        correct: "C"
+      },
+      {
+        text: "2. If you want to beat the league champions, you need to <strong>STEP UP YOUR GAME</strong> in both training and focus.",
+        options: [
+          "A) Practice more",
+          "B) Give a surprise attack",
+          "C) Perform better",
+          "D) Finish the game"
+        ],
+        correct: "C"
+      },
+      {
+        text: "3. The employee was caught violating company policy, but he only got a <strong>SLAP ON THE WRIST</strong> instead of being suspended.",
+        options: [
+          "A) Once a week suspension",
+          "B) A very mild punishment",
+          "C) A reprimand",
+          "D) A written warning"
+        ],
+        correct: "B"
+      },
+      {
+        text: "4. I wanted to correct her mistake, but I decided to <strong>BITE MY TONGUE</strong> to avoid an argument.",
+        options: [
+          "A) Don’t talk too much",
+          "B) Be respectful",
+          "C) Avoid talking",
+          "D) Behave properly"
+        ],
+        correct: "C"
+      },
+      {
+        text: "5. After presenting all the facts, the lawyer looked at me and said nothing more — it was clear that <strong>THE BALL WAS IN MY COURT</strong>.",
+        options: [
+          "A) The situation became more intense and competitive.",
+          "B) I was expected to take the next step or make a decision.",
+          "C) The control of the case had shifted to the opposing lawyer.",
+          "D) I had lost influence over what would happen next."
+        ],
+        correct: "B"
+      },
+      {
+        text: "6. Everyone's talking about that new smartphone app like it's the <strong>BEST THING SINCE SLICED BREAD</strong>.",
+        options: [
+          "A) The hottest thing",
+          "B) Best technological breakthrough",
+          "C) A good invention or innovation",
+          "D) Expensive but useful"
+        ],
+        correct: "C"
+      },
+      {
+        text: "7. I’d love to buy that designer bag, but it <strong>COSTS AN ARM AND A LEG</strong>, so I’ll have to pass for now.",
+        options: [
+          "A) It requires a lot of effort to carry.",
+          "B) It’s extremely expensive.",
+          "C) It is made with rare materials.",
+          "D) It’s not available in stores anymore."
+        ],
+        correct: "B"
+      },
+      {
+        text: "8. When Maria said the project failed because of poor planning, she really <strong>HIT THE NAIL ON THE HEAD</strong>.",
+        options: [
+          "A) She accidentally hurt herself.",
+          "B) She made a lucky guess.",
+          "C) She said something completely irrelevant.",
+          "D) She identified the exact problem accurately."
+        ],
+        correct: "D"
+      },
+      {
+        text: "9. After our first proposal was rejected by the client, we had no choice but to go <strong>BACK TO THE DRAWING BOARD</strong>.",
+        options: [
+          "A) To restart a task with a completely new approach.",
+          "B) To blame someone else for a failure.",
+          "C) To celebrate after completing a task.",
+          "D) To present the same idea more confidently."
+        ],
+        correct: "A"
+      },
+      {
+        text: "10. After seeing how popular the new fitness trend had become, Jake wasted no time <strong>JUMPING ON THE BANDWAGON</strong>.",
+        options: [
+          "A) To lead a new movement or idea.",
+          "B) To ignore something that everyone else is doing.",
+          "C) To criticize a popular opinion without reason.",
+          "D) To join others in doing something popular or trendy."
+        ],
+        correct: "D"
+      }
+    ];
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById("quizForm");
+      questions.forEach((q, index) => {
+        const div = document.createElement("div");
+        div.classList.add("question");
+
+        const p = document.createElement("p");
+        p.innerHTML = `<strong>${q.text}</strong>`;
+        div.appendChild(p);
+
+        const ul = document.createElement("ul");
+        ul.classList.add("choices");
+
+        q.options.forEach(opt => {
+          const letter = opt.charAt(0);
+          const li = document.createElement("li");
+          li.innerHTML = `<input type="radio" name="q${index+1}" value="${letter}"> ${opt}`;
+          ul.appendChild(li);
+        });
+
+        const exp = document.createElement("p");
+        exp.id = `explanation${index+1}`;
+
+        div.appendChild(ul);
+        div.appendChild(exp);
+        form.insertBefore(div, form.lastElementChild);
+      });
+
+      const submitBtn = document.createElement("button");
+      submitBtn.type = "button";
+      submitBtn.textContent = "Submit";
+      submitBtn.onclick = checkAnswers;
+      form.appendChild(submitBtn);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      let result = document.getElementById("result");
+      result.innerHTML = "";
+
+      questions.forEach((q, index) => {
+        const name = `q${index+1}`;
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        const correct = q.correct;
+        const explanation = document.getElementById(`explanation${index+1}`);
+        const choices = document.getElementsByName(name);
+
+        choices.forEach(choice => choice.disabled = true);
+
+        if (selected) {
+          if (selected.value === correct) {
+            selected.parentElement.style.color = "green";
+            score++;
+          } else {
+            selected.parentElement.style.color = "red";
+            choices.forEach(choice => {
+              if (choice.value === correct) {
+                choice.parentElement.style.color = "green";
+              }
+            });
+          }
+        } else {
+          choices.forEach(choice => {
+            if (choice.value === correct) {
+              choice.parentElement.style.color = "green";
+            }
+          });
+        }
+
+        explanation.innerHTML = `<span class="correct-answer">Correct Answer: ${correct}</span>`;
+      });
+
+      result.innerHTML = score >= 8
+        ? `✅ You passed! Your score is: ${score}/10`
+        : `❌ You failed. Your score is: ${score}/10`;
+      result.style.color = score >= 8 ? "green" : "red";
+
+      document.querySelector("button").disabled = true;
+    }
+  </script>
+</form>
+
+<div id="result" class="result"></div>
+
+<div class="social-link">
+  <p>Follow us on <a href="https://www.facebook.com/cselearningessentials/" target="_blank">Facebook</a> for more updates!</p>
+  <p>Subscribe to our YouTube Channel <a href="https://www.youtube.com/@cselearningessentialsph2023" target="_blank">here</a> for more content!</p>
+</div>
+
+  <div class="advertisement">
+    <img src="images/advertisement.png" alt="Civil Service E-book" style="width: 100%; max-width: 400px; display: block; margin: 0 auto 15px auto; border-radius: 5px;">
+    <p>Avail our latest Civil Service Exam Reviewer E-books. Direct message us for more details!</p>
+  </div>
+
+</body>
+</html>
