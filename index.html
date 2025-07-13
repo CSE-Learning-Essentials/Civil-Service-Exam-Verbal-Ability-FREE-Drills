@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Civil Service Exam Practice Test - Error Recognition</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+  .question {
+    margin-bottom: 20px;
+  }
+  .answers {
+    list-style: none;
+    padding: 0;
+  }
+  .answers li {
+    margin: 5px 0;
+  }
+  .submit-btn {
+    margin-top: 20px;
+  }
+  .result, .explanation {
+    margin-top: 30px;
+    padding: 15px;
+    border-top: 2px solid #ccc;
+  }
+  .correct { color: green; }
+  .incorrect { color: red; }
+  .advertisement img {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 0 auto 15px;
+    border-radius: 5px;
+  }
+
+  .underlined {
+    position: relative;
+    display: inline-block;
+  }
+  .underlined::after {
+    content: attr(data-label);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7em;
+    font-weight: bold;
+    margin-top: 1px;
+  }
+</style>
+</head>
+<body>
+
+<h1>CIVIL SERVICE EXAM PRACTICE TEST</h1>
+<h3>CREATED BY: CSE LEARNING ESSENTIALS</h3>
+<h2>SECTION 1: VERBAL ABILITY</h2>
+<h3>PART 3: ERROR RECOGNITION</h3>
+<p><strong>10-ITEM TEST</strong> | <strong>PASSING SCORE: 8</strong></p>
+
+<p><em>Directions:</em> For each sentence, choose the word or phrase that must be removed or replaced in order to make the sentence grammatically correct. Choose the option E if the sentence has no errors.</p>
+
+<form id="quiz-form">
+  <div id="questions-container"></div>
+  <div class="submit-btn">
+    <button type="button" onclick="submitQuiz()">Submit</button>
+  </div>
+</form>
+
+<div id="result" class="result"></div>
+<div id="explanation" class="explanation" style="display:none;"></div>
+
+<div class="social-link">
+  <p>Follow us on <a href="https://www.facebook.com/cselearningessentials/" target="_blank">Facebook</a> for more updates!</p>
+  <p>Subscribe to our YouTube Channel <a href="https://www.youtube.com/@cselearningessentialsph2023" target="_blank">here</a> for more content!</p>
+</div>
+
+<div class="advertisement">
+  <img src="images/advertisement.png" alt="Civil Service Exam Reviewer E-book">
+  <p>Avail our latest Civil Service Exam Reviewer E-books. Direct message us for more details!</p>
+</div>
+
+<script>
+const questions = [
+{
+sentence:`1. A new list of students <span class="underlined" data-label="A"><u>who</u></span> <span class="underlined" data-label="B"><u>have hurdled</u></span> the exam <span class="underlined" data-label="C"><u>are</u></span> posted <span class="underlined" data-label="D"><u>on</u></span> the bulletin board.`,
+options:["A. who","B. have hurdled","C. are","D. on","E. NO ERROR"],
+correct:"C",
+topic:"Subject-verb agreement",
+explanation:"The verb should be 'is' instead of 'are' to agree with the singular subject 'list'.",
+correction:"A new list of students who have hurdled the exam is posted on the bulletin board."
+},
+{
+sentence:`2. She <span class="underlined" data-label="A"><u>prepares</u></span> dinner <span class="underlined" data-label="B"><u>every night</u></span> when she <span class="underlined" data-label="C"><u>came</u></span> home <span class="underlined" data-label="D"><u>from</u></span> work.`,
+options:["A. prepares","B. every night","C. came","D. from","E. NO ERROR"],
+correct:"C",
+topic:"Verb Tense",
+explanation:"Use 'comes' instead of past tense 'came' to maintain consistency.",
+correction:"She prepares dinner every night when she comes home from work."
+},
+{
+sentence:`3. <span class="underlined" data-label="A"><u>Most</u></span> of the female trainees who <span class="underlined" data-label="B"><u>had joined</u></span> the parade <span class="underlined" data-label="C"><u>took</u></span> <span class="underlined" data-label="D"><u>her</u></span> lunch at the school canteen.`,
+options:["A. Most","B. had joined","C. took","D. her","E. NO ERROR"],
+correct:"D",
+topic:"Pronoun-Antecedent Agreement",
+explanation:"Use 'their' to match plural antecedent 'female trainees'.",
+correction:"…took their lunch at the school canteen."
+},
+{
+sentence:`4. Every <span class="underlined" data-label="A"><u>student</u></span> must <span class="underlined" data-label="B"><u>submit</u></span> <span class="underlined" data-label="C"><u>their</u></span> final project <span class="underlined" data-label="D"><u>before</u></span> the deadline.`,
+options:["A. student","B. submit","C. their","D. before","E. NO ERROR"],
+correct:"C",
+topic:"Pronoun-Antecedent Agreement",
+explanation:"Singular 'student' requires singular pronoun 'his or her'.",
+correction:"…must submit his or her final project…"
+},
+{
+sentence:`5. <span class="underlined" data-label="A"><u>His parents</u></span> <span class="underlined" data-label="B"><u>objected</u></span> <span class="underlined" data-label="C"><u>to him</u></span> <span class="underlined" data-label="D"><u>studying all night.</u></span>`,
+options:["A. His parents","B. objected","C. to him","D. studying all night.","E. NO ERROR"],
+correct:"C",
+topic:"Pronoun Case with Gerunds",
+explanation:"Use possessive 'his' before gerund 'studying'.",
+correction:"…objected to his studying all night."
+},
+{
+sentence:`6. Either Ronald or Ben <span class="underlined" data-label="A"><u>will</u></span> always <span class="underlined" data-label="B"><u>do</u></span> <span class="underlined" data-label="C"><u>their</u></span> best <span class="underlined" data-label="D"><u>work</u></span> under pressure.`,
+options:["A. will","B. do","C. their","D. work","E. NO ERROR"],
+correct:"C",
+topic:"Pronoun-Antecedent Agreement",
+explanation:"Use singular 'his' to agree with singular subject.",
+correction:"…will always do his best work…"
+},
+{
+sentence:`7. During the <span class="underlined" data-label="A"><u>courtroom</u></span> <span class="underlined" data-label="B"><u>proceedings</u></span>, the judge <span class="underlined" data-label="C"><u>demanded that</u></span> the witness <span class="underlined" data-label="D"><u>takes</u></span> an oath.`,
+options:["A. courtroom","B. proceedings","C. demanded that","D. takes","E. NO ERROR"],
+correct:"D",
+topic:"Subjunctive Mood",
+explanation:"Use base form 'take' after 'demanded that'.",
+correction:"…demanded that the witness take an oath…"
+},
+{
+sentence:`8. She <span class="underlined" data-label="A"><u>likes</u></span> reading books, <span class="underlined" data-label="B"><u>to</u></span> jog in the <span class="underlined" data-label="C"><u>morning</u></span>, and <span class="underlined" data-label="D"><u>cooking</u></span> dinner.`,
+options:["A. likes","B. to","C. morning","D. cooking","E. NO ERROR"],
+correct:"B",
+topic:"Parallelism",
+explanation:"Maintain parallel structure: all gerunds ('reading', 'jogging', 'cooking').",
+correction:"She likes reading books, jogging in the morning, and cooking dinner."
+},
+{
+sentence:`9. <span class="underlined" data-label="A"><u>Politics</u></span> <span class="underlined" data-label="B"><u>are</u></span> often discussed <span class="underlined" data-label="C"><u>at their house</u></span>, which sometimes <span class="underlined" data-label="D"><u>leads</u></span> to heated debates.`,
+options:["A. Politics","B. are","C. at their house","D. leads","E. NO ERROR"],
+correct:"B",
+topic:"Subject-verb agreement",
+explanation:"'Politics' is singular; use 'is'.",
+correction:"Politics is often discussed…"
+},
+{
+sentence:`10. Everyone <span class="underlined" data-label="A"><u>was shocked</u></span> by <span class="underlined" data-label="B"><u>them</u></span> marrying so young and deciding <span class="underlined" data-label="C"><u>to move</u></span> abroad <span class="underlined" data-label="D"><u>right after</u></span> the wedding.`,
+options:["A. was shocked","B. them","C. to move","D. right after","E. NO ERROR"],
+correct:"B",
+topic:"Pronoun Case",
+explanation:"Use 'their' instead of 'them' before gerund.",
+correction:"…by their marrying so young…"
+}
+];
+
+const container = document.getElementById("questions-container");
+
+questions.forEach((q, idx) => {
+  const num = idx + 1;
+  let html = `<div class='question'><p><strong>${q.sentence}</strong></p><ul class='answers'>`;
+  q.options.forEach(opt => {
+    const letter = opt[0];
+    html += `<li><label><input type='radio' name='q${num}' value='${letter}'> ${opt}</label></li>`;
+  });
+  html += `</ul></div>`;
+  container.innerHTML += html;
+});
+
+function submitQuiz() {
+  let score = 0, resultHTML = '', explanationHTML = '<h3>Answer Explanations:</h3><ol>';
+  const unanswered = [];
+
+  questions.forEach((q, idx) => {
+    const num = idx + 1;
+    const selected = document.querySelector(`input[name='q${num}']:checked`);
+    const answer = q.correct;
+
+    if (!selected) {
+      unanswered.push(num);
+      return;
+    }
+
+    if (selected.value === answer) {
+      resultHTML += `<p class='correct'>Q${num}: ✅ Correct</p>`;
+      score++;
+    } else {
+      resultHTML += `<p class='incorrect'>Q${num}: ❌ Incorrect. Correct: ${answer}</p>`;
+    }
+
+    explanationHTML += `
+    <li>
+      <strong>Answer:</strong> ${answer}<br>
+      <strong>Topic:</strong> ${q.topic}<br>
+      <strong>Explanation:</strong> ${q.explanation}<br>
+      <em>Correct Sentence:</em> ${q.correction}
+    </li>`;
+  });
+
+  if (unanswered.length > 0) {
+    alert(`Please answer all questions. Missing: ${unanswered.join(", ")}`);
+    return;
+  }
+
+  explanationHTML += '</ol>';
+
+  let status = score >= 8 ? "✅ Passed" : "❌ Failed";
+  document.getElementById("result").innerHTML = `<h3>Your Score: ${score}/10 - ${status}</h3>${resultHTML}`;
+  document.getElementById("explanation").innerHTML = explanationHTML;
+  document.getElementById("explanation").style.display = "block";
+  document.getElementById("result").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
